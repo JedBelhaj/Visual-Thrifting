@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum ItemStatus {
+  AVAILABLE
+  RESERVED
+  SOLD
+}
+
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+model User {
+  id           String        @id @default(cuid())
+  name         String
+  email        String        @unique
+  passwordHash String
+  role         Role          @default(USER)
+  createdAt    DateTime      @default(now())
+  reservations Reservation[]
+}
+
+model Item {
+  id           String        @id @default(cuid())
+  title        String
+  description  String
+  category     String
+  size         String
+  condition    String
+  price        Int           // stored in millimes (1 TND = 1000)
+  status       ItemStatus    @default(AVAILABLE)
+  images       ItemImage[]
+  reservations Reservation[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model ItemImage {
+  id     String @id @default(cuid())
+  url    String
+  order  Int    @default(0)
+  item   Item   @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId String
+}
+
+model Reservation {
+  id        String            @id @default(cuid())
+  item      Item              @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId    String
+  user      User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  status    ReservationStatus @default(PENDING)
+  createdAt DateTime          @default(now())
+}

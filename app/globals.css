@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #faf6f0;
+  --color-sand: #f0e8dd;
+  --color-ink: #2b2620;
+  --color-muted: #7a7168;
+  --color-clay: #c2683f;
+  --color-clay-dark: #a6532f;
+  --color-sage: #6b7b5e;
+  --color-line: #e4dace;
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-lg: 0.9rem;
+}
+
+:root {
+  --background: var(--color-cream);
+  --foreground: var(--color-ink);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  /* Contain the welcome hero's 100vw full-bleed so it can't add a horizontal
+     scrollbar (clip, not hidden, so it never creates a scroll container). */
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+/* Tailwind's preflight already resets `a` to `color: inherit` inside
+   `@layer base`, so `text-*` utilities on links win. Don't redeclare it here
+   unlayered — that would override every `text-*` utility applied to an <a>. */
+
+/* ---- Welcome page animations ---- */
+
+@keyframes vt-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vt-ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.vt-fade-up {
+  animation: vt-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.vt-fade-in {
+  animation: vt-fade-in 0.9s ease both;
+}
+
+.vt-ken-burns {
+  animation: vt-ken-burns 7s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vt-fade-up,
+  .vt-fade-in,
+  .vt-ken-burns {
+    animation: none;
+  }
+}
