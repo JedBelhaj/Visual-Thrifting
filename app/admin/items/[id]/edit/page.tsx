@@ -28,7 +28,7 @@ export default async function EditItemPage({
 
   return (
     <div className="space-y-5">
-      <Link href="/admin/items" className="text-sm text-muted hover:text-ink">
+      <Link href="/admin/items" className="text-sm text-muted hover:text-cream">
         ← Items
       </Link>
       <div className="flex flex-wrap items-center gap-3">
@@ -39,7 +39,7 @@ export default async function EditItemPage({
       <ItemForm item={item} />
 
       {item.reservations.length > 0 && (
-        <section className="max-w-2xl rounded-lg border border-line bg-white/50 p-4">
+        <section className="max-w-2xl rounded-lg border border-line bg-surface p-4">
           <h2 className="font-display text-lg">Reservation history</h2>
           <ul className="mt-2 divide-y divide-line text-sm">
             {item.reservations.map((r) => (

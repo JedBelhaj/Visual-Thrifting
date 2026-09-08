@@ -24,13 +24,13 @@ export function SiteHeaderChrome({ children }: { children: React.ReactNode }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-30 border-b transition-colors duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
         transparent
           ? "border-transparent bg-transparent"
-          : "border-line bg-cream/80 backdrop-blur"
+          : "border-line bg-ink/80 backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-5">
         {children}
       </div>
     </header>

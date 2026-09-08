@@ -22,18 +22,18 @@ export default async function AdminItemsPage() {
         <h1 className="font-display text-2xl">Items ({items.length})</h1>
         <Link
           href="/admin/items/new"
-          className="rounded-full bg-clay px-5 py-2.5 text-sm font-medium text-cream hover:bg-clay-dark"
+          className="rounded-full bg-purple px-5 py-2.5 text-sm font-medium text-cream hover:bg-purple-dark"
         >
           + Add item
         </Link>
       </div>
 
       {items.length === 0 ? (
-        <p className="rounded-lg border border-line bg-white/50 p-8 text-center text-muted">
+        <p className="rounded-lg border border-line bg-surface p-8 text-center text-muted">
           No items yet. Add your first piece.
         </p>
       ) : (
-        <div className="overflow-x-auto rounded-lg border border-line bg-white/50">
+        <div className="overflow-x-auto rounded-lg border border-line bg-surface">
           <table className="w-full min-w-[720px] text-sm">
             <thead className="border-b border-line text-left text-xs uppercase tracking-wide text-muted">
               <tr>
@@ -52,7 +52,7 @@ export default async function AdminItemsPage() {
                 <tr key={item.id}>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
-                      <div className="relative h-12 w-10 shrink-0 overflow-hidden rounded bg-sand">
+                      <div className="relative h-12 w-10 shrink-0 overflow-hidden rounded bg-surface-2">
                         {item.images[0] && (
                           <Image
                             src={item.images[0].url}
@@ -65,7 +65,7 @@ export default async function AdminItemsPage() {
                       </div>
                       <Link
                         href={`/admin/items/${item.id}/edit`}
-                        className="font-medium hover:text-clay-dark"
+                        className="font-medium hover:text-purple"
                       >
                         {item.title}
                       </Link>
@@ -87,7 +87,7 @@ export default async function AdminItemsPage() {
                     <div className="flex items-center gap-3">
                       <Link
                         href={`/admin/items/${item.id}/edit`}
-                        className="text-xs text-clay-dark underline"
+                        className="text-xs text-purple underline"
                       >
                         Edit
                       </Link>

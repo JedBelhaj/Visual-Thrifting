@@ -57,7 +57,7 @@ export default async function AdminDashboard() {
         <h1 className="font-display text-2xl">Dashboard</h1>
         <Link
           href="/admin/items/new"
-          className="rounded-full bg-clay px-5 py-2.5 text-sm font-medium text-cream hover:bg-clay-dark"
+          className="rounded-full bg-purple px-5 py-2.5 text-sm font-medium text-cream hover:bg-purple-dark"
         >
           + Add item
         </Link>
@@ -71,7 +71,7 @@ export default async function AdminDashboard() {
       </div>
 
       {pendingCount > 0 && (
-        <div className="rounded-lg border border-clay/30 bg-clay/10 px-4 py-3 text-sm">
+        <div className="rounded-lg border border-purple/40 bg-purple/10 px-4 py-3 text-sm">
           <strong>{pendingCount}</strong> reservation
           {pendingCount === 1 ? "" : "s"} awaiting pickup.{" "}
           <Link href="/admin/reservations" className="underline">
@@ -81,7 +81,7 @@ export default async function AdminDashboard() {
       )}
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <section className="rounded-lg border border-line bg-white/50 p-5">
+        <section className="rounded-lg border border-line bg-surface p-5">
           <h2 className="font-display text-lg">Items by category</h2>
           {byCategory.length === 0 ? (
             <p className="mt-3 text-sm text-muted">No items yet.</p>
@@ -95,9 +95,9 @@ export default async function AdminDashboard() {
                     <span className="w-28 shrink-0 text-muted">
                       {row.category}
                     </span>
-                    <span className="h-2 flex-1 overflow-hidden rounded-full bg-sand">
+                    <span className="h-2 flex-1 overflow-hidden rounded-full bg-surface-2">
                       <span
-                        className="block h-full bg-clay"
+                        className="block h-full bg-purple"
                         style={{
                           width: `${Math.max(
                             6,
@@ -113,7 +113,7 @@ export default async function AdminDashboard() {
           )}
         </section>
 
-        <section className="rounded-lg border border-line bg-white/50 p-5">
+        <section className="rounded-lg border border-line bg-surface p-5">
           <h2 className="font-display text-lg">Most reserved</h2>
           {mostReservedRows.length === 0 ? (
             <p className="mt-3 text-sm text-muted">No reservations yet.</p>
@@ -126,7 +126,7 @@ export default async function AdminDashboard() {
                 >
                   <Link
                     href={`/admin/items/${item!.id}/edit`}
-                    className="truncate hover:text-clay-dark"
+                    className="truncate hover:text-purple"
                   >
                     {item!.title}
                   </Link>
@@ -140,7 +140,7 @@ export default async function AdminDashboard() {
         </section>
       </div>
 
-      <section className="rounded-lg border border-line bg-white/50 p-5">
+      <section className="rounded-lg border border-line bg-surface p-5">
         <h2 className="font-display text-lg">Recent reservations</h2>
         {recentReservations.length === 0 ? (
           <p className="mt-3 text-sm text-muted">Nothing yet.</p>
@@ -153,7 +153,7 @@ export default async function AdminDashboard() {
                 <span className="text-muted">reserved</span>
                 <Link
                   href={`/admin/items/${r.itemId}/edit`}
-                  className="hover:text-clay-dark"
+                  className="hover:text-purple"
                 >
                   {r.item.title}
                 </Link>
@@ -166,7 +166,7 @@ export default async function AdminDashboard() {
         )}
       </section>
 
-      <section className="rounded-lg border border-line bg-white/50 p-5">
+      <section className="rounded-lg border border-line bg-surface p-5">
         <h2 className="font-display text-lg">Recently added</h2>
         {recentItems.length === 0 ? (
           <p className="mt-3 text-sm text-muted">No items yet.</p>
@@ -176,7 +176,7 @@ export default async function AdminDashboard() {
               <li key={i.id} className="flex items-center gap-3 py-2">
                 <Link
                   href={`/admin/items/${i.id}/edit`}
-                  className="flex-1 truncate hover:text-clay-dark"
+                  className="flex-1 truncate hover:text-purple"
                 >
                   {i.title}
                 </Link>
@@ -193,7 +193,7 @@ export default async function AdminDashboard() {
 
 function Stat({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-lg border border-line bg-white/50 p-4">
+    <div className="rounded-lg border border-line bg-surface p-4">
       <p className="text-2xl font-semibold">{value}</p>
       <p className="text-xs text-muted">{label}</p>
     </div>

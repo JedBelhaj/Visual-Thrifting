@@ -1,33 +1,31 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { Fraunces } from "next/font/google";
+import { Big_Shoulders, Work_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const workSans = Work_Sans({
+  variable: "--font-work-sans",
   subsets: ["latin"],
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const bigShoulders = Big_Shoulders({
+  variable: "--font-big-shoulders",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "Visual Thrift — curated secondhand clothing",
+  title: "Visual Thrifting — curated secondhand clothing",
   description:
-    "A small shop for pre-loved clothing. Browse the rail, reserve what you love, pick it up in person.",
+    "One-of-a-kind pre-loved pieces. Browse the rail, reserve what you love, try it on and pay in person at pickup.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${workSans.variable} ${bigShoulders.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-cream text-ink">
+      <body className="min-h-full flex flex-col bg-ink text-cream">
         {children}
       </body>
     </html>

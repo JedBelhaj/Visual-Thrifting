@@ -9,7 +9,7 @@ export function CancelReservationButton({ id }: { id: string }) {
     <form action={action}>
       <SubmitButton
         pendingText="Cancelling…"
-        className="rounded-full border border-line px-4 py-2 text-xs font-medium text-muted transition hover:border-clay hover:text-clay-dark disabled:opacity-60"
+        className="rounded-md border border-line px-4 py-2 font-display text-xs font-bold uppercase tracking-wide text-cream/55 transition-colors hover:border-purple hover:text-purple disabled:opacity-60"
       >
         Cancel reservation
       </SubmitButton>

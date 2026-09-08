@@ -46,11 +46,11 @@ export default async function AdminReservationsPage({
       </div>
 
       {reservations.length === 0 ? (
-        <p className="rounded-lg border border-line bg-white/50 p-8 text-center text-muted">
+        <p className="rounded-lg border border-line bg-surface p-8 text-center text-muted">
           No reservations{filter ? ` with status “${STATUS_LABELS[filter]}”` : ""}.
         </p>
       ) : (
-        <div className="overflow-x-auto rounded-lg border border-line bg-white/50">
+        <div className="overflow-x-auto rounded-lg border border-line bg-surface">
           <table className="w-full min-w-[760px] text-sm">
             <thead className="border-b border-line text-left text-xs uppercase tracking-wide text-muted">
               <tr>
@@ -66,7 +66,7 @@ export default async function AdminReservationsPage({
                 <tr key={r.id}>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
-                      <div className="relative h-12 w-10 shrink-0 overflow-hidden rounded bg-sand">
+                      <div className="relative h-12 w-10 shrink-0 overflow-hidden rounded bg-surface-2">
                         {r.item.images[0] && (
                           <Image
                             src={r.item.images[0].url}
@@ -80,7 +80,7 @@ export default async function AdminReservationsPage({
                       <div>
                         <Link
                           href={`/admin/items/${r.itemId}/edit`}
-                          className="font-medium hover:text-clay-dark"
+                          className="font-medium hover:text-purple"
                         >
                           {r.item.title}
                         </Link>
@@ -127,8 +127,8 @@ function FilterChip({
       href={href}
       className={`rounded-full px-3 py-1.5 ${
         active
-          ? "bg-ink text-cream"
-          : "border border-line text-muted hover:bg-sand hover:text-ink"
+          ? "bg-purple text-cream"
+          : "border border-line text-muted hover:bg-surface-2 hover:text-cream"
       }`}
     >
       {label}

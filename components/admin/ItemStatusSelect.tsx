@@ -21,7 +21,7 @@ export function ItemStatusSelect({
         const next = e.target.value;
         startTransition(() => setItemStatus(id, next));
       }}
-      className="rounded-md border border-line bg-white px-2 py-1 text-xs text-ink disabled:opacity-50"
+      className="rounded-md border border-line bg-surface px-2 py-1 text-xs text-cream disabled:opacity-50"
     >
       {ITEM_STATUSES.map((s) => (
         <option key={s} value={s}>

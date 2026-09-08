@@ -14,7 +14,7 @@ export function Gallery({
 
   if (images.length === 0) {
     return (
-      <div className="flex aspect-[4/5] items-center justify-center rounded-lg bg-sand text-sm text-muted">
+      <div className="flex aspect-[4/5] items-center justify-center rounded-lg bg-surface text-sm text-muted">
         No photo
       </div>
     );
@@ -22,7 +22,7 @@ export function Gallery({
 
   return (
     <div className="space-y-3">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-sand">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-surface ring-1 ring-line">
         <Image
           src={images[active].url}
           alt={title}
@@ -40,7 +40,7 @@ export function Gallery({
               type="button"
               onClick={() => setActive(i)}
               className={`relative h-16 w-16 overflow-hidden rounded-md border-2 transition ${
-                i === active ? "border-clay" : "border-transparent opacity-70"
+                i === active ? "border-purple" : "border-transparent opacity-60 hover:opacity-100"
               }`}
             >
               <Image

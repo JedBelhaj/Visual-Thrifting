@@ -28,7 +28,7 @@ type Slot =
   | { key: string; kind: "new"; file: File; url: string };
 
 const input =
-  "mt-1 w-full rounded-md border border-line bg-white px-3 py-2 text-sm text-ink";
+  "mt-1 w-full rounded-md border border-line bg-surface px-3 py-2 text-sm text-cream";
 const labelCls = "block text-sm text-muted";
 
 let slotSeq = 0;
@@ -208,7 +208,7 @@ export function ItemForm({ item }: { item?: ExistingItem }) {
             {slots.map((slot, i) => (
               <li
                 key={slot.key}
-                className="group relative overflow-hidden rounded-md border border-line bg-sand"
+                className="group relative overflow-hidden rounded-md border border-line bg-surface-2"
               >
                 <div className="relative aspect-[4/5]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -223,13 +223,13 @@ export function ItemForm({ item }: { item?: ExistingItem }) {
                     Cover
                   </span>
                 )}
-                <div className="flex items-center justify-between gap-1 bg-white/90 px-1.5 py-1">
+                <div className="flex items-center justify-between gap-1 bg-surface-2 px-1.5 py-1">
                   <button
                     type="button"
                     onClick={() => move(i, -1)}
                     disabled={i === 0}
                     aria-label="Move earlier"
-                    className="rounded px-1 text-sm text-muted hover:text-ink disabled:opacity-30"
+                    className="rounded px-1 text-sm text-muted hover:text-cream disabled:opacity-30"
                   >
                     ←
                   </button>
@@ -238,7 +238,7 @@ export function ItemForm({ item }: { item?: ExistingItem }) {
                     onClick={() => move(i, 1)}
                     disabled={i === slots.length - 1}
                     aria-label="Move later"
-                    className="rounded px-1 text-sm text-muted hover:text-ink disabled:opacity-30"
+                    className="rounded px-1 text-sm text-muted hover:text-cream disabled:opacity-30"
                   >
                     →
                   </button>
@@ -246,7 +246,7 @@ export function ItemForm({ item }: { item?: ExistingItem }) {
                     type="button"
                     onClick={() => removeSlot(slot.key)}
                     aria-label="Remove photo"
-                    className="rounded px-1 text-sm text-muted hover:text-clay-dark"
+                    className="rounded px-1 text-sm text-muted hover:text-purple"
                   >
                     ×
                   </button>
@@ -265,17 +265,17 @@ export function ItemForm({ item }: { item?: ExistingItem }) {
             addFiles(e.target.files);
             e.target.value = "";
           }}
-          className="block w-full text-sm text-muted file:mr-3 file:rounded-full file:border-0 file:bg-ink file:px-4 file:py-2 file:text-sm file:text-cream"
+          className="block w-full text-sm text-muted file:mr-3 file:rounded-full file:border-0 file:bg-purple file:px-4 file:py-2 file:text-sm file:font-medium file:text-cream"
         />
       </fieldset>
 
-      {error && <p className="text-sm text-clay-dark">{error}</p>}
+      {error && <p className="text-sm text-hot">{error}</p>}
 
       <div className="flex items-center gap-3">
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex items-center justify-center rounded-full bg-clay px-6 py-3 text-sm font-medium text-cream transition hover:bg-clay-dark disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-full bg-purple px-6 py-3 text-sm font-medium text-cream transition hover:bg-purple-dark disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isPending
             ? "Saving…"
@@ -283,7 +283,7 @@ export function ItemForm({ item }: { item?: ExistingItem }) {
               ? "Save changes"
               : "Publish item"}
         </button>
-        <Link href="/admin/items" className="text-sm text-muted hover:text-ink">
+        <Link href="/admin/items" className="text-sm text-muted hover:text-cream">
           Cancel
         </Link>
       </div>

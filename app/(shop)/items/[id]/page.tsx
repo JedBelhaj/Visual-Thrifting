@@ -29,7 +29,10 @@ export default async function ItemPage({
 
   return (
     <div className="space-y-6">
-      <Link href="/shop" className="text-sm text-muted hover:text-ink">
+      <Link
+        href="/shop"
+        className="font-display text-sm font-bold uppercase tracking-wide text-cream/50 transition-colors hover:text-purple"
+      >
         ← Back to the rail
       </Link>
 
@@ -41,26 +44,36 @@ export default async function ItemPage({
             <div className="mb-2">
               <StatusBadge status={item.status} />
             </div>
-            <h1 className="font-display text-3xl leading-tight">{item.title}</h1>
-            <p className="mt-2 text-xl font-medium">{formatPrice(item.price)}</p>
+            <h1 className="font-display text-[clamp(1.9rem,4vw,2.75rem)] font-extrabold uppercase leading-[0.95]">
+              {item.title}
+            </h1>
+            <p className="mt-2 font-display text-2xl font-extrabold text-purple">
+              {formatPrice(item.price)}
+            </p>
           </div>
 
           <dl className="grid grid-cols-2 gap-3 border-y border-line py-4 text-sm">
             <div>
-              <dt className="text-muted">Category</dt>
-              <dd>{item.category}</dd>
+              <dt className="font-display text-xs font-bold uppercase tracking-wide text-cream/45">
+                Category
+              </dt>
+              <dd className="mt-0.5">{item.category}</dd>
             </div>
             <div>
-              <dt className="text-muted">Size</dt>
-              <dd>{item.size}</dd>
+              <dt className="font-display text-xs font-bold uppercase tracking-wide text-cream/45">
+                Size
+              </dt>
+              <dd className="mt-0.5">{item.size}</dd>
             </div>
             <div>
-              <dt className="text-muted">Condition</dt>
-              <dd>{item.condition}</dd>
+              <dt className="font-display text-xs font-bold uppercase tracking-wide text-cream/45">
+                Condition
+              </dt>
+              <dd className="mt-0.5">{item.condition}</dd>
             </div>
           </dl>
 
-          <p className="whitespace-pre-line text-sm leading-relaxed text-ink/90">
+          <p className="whitespace-pre-line text-sm leading-relaxed text-cream/80">
             {item.description}
           </p>
 

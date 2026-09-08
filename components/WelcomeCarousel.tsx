@@ -46,7 +46,7 @@ export function WelcomeCarousel({ slides }: { slides: CarouselSlide[] }) {
 
   return (
     <div
-      className="relative overflow-hidden rounded-lg bg-sand"
+      className="relative overflow-hidden rounded-lg bg-surface-2"
       role="region"
       aria-roledescription="carousel"
       aria-label="Featured pieces"
@@ -80,15 +80,15 @@ export function WelcomeCarousel({ slides }: { slides: CarouselSlide[] }) {
               sizes="(max-width: 1024px) 100vw, 1024px"
               className={`object-cover ${i === index ? "vt-ken-burns" : ""}`}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8">
-              <p className="text-xs uppercase tracking-widest text-cream/80">
+              <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-purple">
                 {slide.category}
               </p>
-              <h3 className="mt-1 font-display text-2xl text-cream sm:text-3xl">
+              <h3 className="mt-1 font-display text-2xl font-extrabold uppercase tracking-wide text-cream sm:text-3xl">
                 {slide.title}
               </h3>
-              <p className="mt-1 text-sm text-cream/85">
+              <p className="mt-1 text-sm text-cream/75">
                 {formatPrice(slide.price)} · Size {slide.size} · {slide.condition}
               </p>
             </div>
@@ -102,7 +102,7 @@ export function WelcomeCarousel({ slides }: { slides: CarouselSlide[] }) {
             type="button"
             onClick={() => go(index - 1)}
             aria-label="Previous piece"
-            className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-cream/85 p-2 text-ink shadow-sm backdrop-blur transition hover:bg-cream"
+            className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-ink/70 p-2 text-cream ring-1 ring-line backdrop-blur transition hover:bg-purple"
           >
             <Chevron dir="left" />
           </button>
@@ -110,7 +110,7 @@ export function WelcomeCarousel({ slides }: { slides: CarouselSlide[] }) {
             type="button"
             onClick={() => go(index + 1)}
             aria-label="Next piece"
-            className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-cream/85 p-2 text-ink shadow-sm backdrop-blur transition hover:bg-cream"
+            className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-ink/70 p-2 text-cream ring-1 ring-line backdrop-blur transition hover:bg-purple"
           >
             <Chevron dir="right" />
           </button>
@@ -125,8 +125,8 @@ export function WelcomeCarousel({ slides }: { slides: CarouselSlide[] }) {
                 aria-current={i === index}
                 className={`h-2 rounded-full transition-all ${
                   i === index
-                    ? "w-6 bg-cream"
-                    : "w-2 bg-cream/50 hover:bg-cream/80"
+                    ? "w-6 bg-purple"
+                    : "w-2 bg-cream/40 hover:bg-cream/70"
                 }`}
               />
             ))}

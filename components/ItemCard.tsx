@@ -21,15 +21,15 @@ export function ItemCard({ item }: Props) {
 
   return (
     <Link href={`/items/${item.id}`} className="group block">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-sand">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-surface ring-1 ring-line">
         {cover ? (
           <Image
             src={cover}
             alt={item.title}
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
-            className={`object-cover transition duration-500 group-hover:scale-[1.03] ${
-              sold ? "opacity-60 grayscale" : ""
+            className={`object-cover transition duration-500 group-hover:scale-[1.04] ${
+              sold ? "opacity-50 grayscale" : ""
             }`}
           />
         ) : (
@@ -44,14 +44,14 @@ export function ItemCard({ item }: Props) {
         )}
       </div>
       <div className="mt-3 flex items-baseline justify-between gap-3">
-        <h3 className="font-display text-base leading-snug group-hover:text-clay-dark">
+        <h3 className="font-display text-base font-bold uppercase leading-snug tracking-wide transition-colors group-hover:text-purple">
           {item.title}
         </h3>
-        <span className="shrink-0 text-sm font-medium">
+        <span className="shrink-0 font-display text-sm font-extrabold text-purple">
           {formatPrice(item.price)}
         </span>
       </div>
-      <p className="mt-0.5 text-xs text-muted">
+      <p className="mt-0.5 text-xs text-cream/45">
         Size {item.size} · {item.condition}
       </p>
     </Link>

@@ -14,7 +14,7 @@ export function DeleteItemButton({ id }: { id: string }) {
     >
       <button
         type="submit"
-        className="text-xs text-muted underline transition hover:text-clay-dark"
+        className="text-xs text-muted underline transition hover:text-purple"
       >
         Delete
       </button>

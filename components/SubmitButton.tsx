@@ -16,7 +16,7 @@ export function SubmitButton({ children, pendingText, className }: Props) {
       disabled={pending}
       className={
         className ??
-        "inline-flex items-center justify-center rounded-full bg-clay px-6 py-3 text-sm font-medium text-cream transition hover:bg-clay-dark disabled:cursor-not-allowed disabled:opacity-60"
+        "inline-flex items-center justify-center rounded-md bg-purple px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-cream transition-colors hover:bg-purple-dark disabled:cursor-not-allowed disabled:opacity-60"
       }
     >
       {pending ? (pendingText ?? "Working…") : children}

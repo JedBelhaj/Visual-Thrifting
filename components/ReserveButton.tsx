@@ -4,6 +4,9 @@ import { useActionState } from "react";
 import { reserveItem, type ReserveState } from "@/lib/actions/reservations";
 import { SubmitButton } from "@/components/SubmitButton";
 
+const reserveBtn =
+  "w-full rounded-md bg-purple px-6 py-3.5 font-display text-sm font-extrabold uppercase tracking-wider text-cream transition-colors hover:bg-purple-dark disabled:opacity-60";
+
 export function ReserveButton({
   itemId,
   disabled,
@@ -20,7 +23,7 @@ export function ReserveButton({
     return (
       <button
         disabled
-        className="w-full cursor-not-allowed rounded-full bg-sand px-6 py-3 text-sm font-medium text-muted"
+        className="w-full cursor-not-allowed rounded-md bg-surface px-6 py-3.5 font-display text-sm font-extrabold uppercase tracking-wider text-cream/40"
       >
         Not available
       </button>
@@ -29,14 +32,11 @@ export function ReserveButton({
 
   return (
     <form action={formAction} className="space-y-2">
-      <SubmitButton
-        pendingText="Reserving…"
-        className="w-full rounded-full bg-clay px-6 py-3 text-sm font-medium text-cream transition hover:bg-clay-dark disabled:opacity-60"
-      >
+      <SubmitButton pendingText="Reserving…" className={reserveBtn}>
         {loggedIn ? "Reserve this item" : "Log in to reserve"}
       </SubmitButton>
-      {state.error && <p className="text-sm text-clay-dark">{state.error}</p>}
-      <p className="text-xs text-muted">
+      {state.error && <p className="text-sm text-hot">{state.error}</p>}
+      <p className="text-xs text-cream/45">
         Reserving holds the item for pickup. No payment now — pay in person.
       </p>
     </form>

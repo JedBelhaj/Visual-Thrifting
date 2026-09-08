@@ -19,16 +19,18 @@ export default async function AccountPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-display text-2xl">Your reservations</h1>
-        <p className="mt-1 text-sm text-muted">
+        <h1 className="font-display text-3xl font-extrabold uppercase leading-none">
+          Your reservations
+        </h1>
+        <p className="mt-2 text-sm text-cream/55">
           Hi {session.name}. Bring your ID to pick up and pay in person.
         </p>
       </div>
 
       {reservations.length === 0 ? (
-        <p className="rounded-lg border border-line bg-white/50 p-8 text-center text-muted">
+        <p className="rounded-lg border border-line bg-surface p-8 text-center text-cream/55">
           You haven&apos;t reserved anything yet.{" "}
-          <Link href="/shop" className="text-clay-dark underline">
+          <Link href="/shop" className="text-purple underline underline-offset-4">
             Browse the rail
           </Link>
           .
@@ -40,9 +42,9 @@ export default async function AccountPage() {
             return (
               <li
                 key={r.id}
-                className="flex flex-wrap items-center gap-4 rounded-lg border border-line bg-white/50 p-3"
+                className="flex flex-wrap items-center gap-4 rounded-lg border border-line bg-surface p-3"
               >
-                <div className="relative h-20 w-16 shrink-0 overflow-hidden rounded-md bg-sand">
+                <div className="relative h-20 w-16 shrink-0 overflow-hidden rounded-md bg-surface-2">
                   {cover && (
                     <Image
                       src={cover}
@@ -56,11 +58,11 @@ export default async function AccountPage() {
                 <div className="min-w-0 flex-1">
                   <Link
                     href={`/items/${r.itemId}`}
-                    className="font-display text-base hover:text-clay-dark"
+                    className="font-display text-base font-bold uppercase tracking-wide transition-colors hover:text-purple"
                   >
                     {r.item.title}
                   </Link>
-                  <p className="text-xs text-muted">
+                  <p className="text-xs text-cream/45">
                     {formatPrice(r.item.price)} · reserved {formatDate(r.createdAt)}
                   </p>
                 </div>
