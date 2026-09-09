@@ -2,8 +2,8 @@ import "server-only";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 import crypto from "crypto";
+import { UPLOAD_DIR, UPLOAD_URL_PREFIX } from "@/lib/upload-dir";
 
-const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
 const MAX_BYTES = 8 * 1024 * 1024; // 8 MB
 const ALLOWED = new Map<string, string>([
   ["image/jpeg", "jpg"],
@@ -30,7 +30,7 @@ export async function saveImages(files: File[]): Promise<string[]> {
     const name = `${Date.now()}-${crypto.randomBytes(6).toString("hex")}.${ext}`;
     const buffer = Buffer.from(await file.arrayBuffer());
     await writeFile(path.join(UPLOAD_DIR, name), buffer);
-    urls.push(`/uploads/${name}`);
+    urls.push(`${UPLOAD_URL_PREFIX}/${name}`);
   }
 
   return urls;
