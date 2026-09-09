@@ -65,7 +65,7 @@ export default async function WelcomePage() {
   return (
     <div className="space-y-24 pb-12">
       {/* ---- HERO ---- full-bleed, breaks out of <main> on both axes ---- */}
-      <section className="relative -mt-20 mx-[calc(50%_-_50vw)] flex min-h-svh w-screen items-end overflow-hidden bg-ink">
+      <section className="relative -mt-28 mx-[calc(50%_-_50vw)] flex min-h-svh w-screen items-end overflow-hidden bg-ink">
         <Image
           src={heroPhoto}
           alt=""
