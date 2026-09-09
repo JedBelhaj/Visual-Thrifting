@@ -3,6 +3,18 @@ import Image from "next/image";
 import { prisma } from "@/lib/db";
 import { ItemCard } from "@/components/ItemCard";
 import { WelcomeCarousel, type CarouselSlide } from "@/components/WelcomeCarousel";
+import type { Icon } from "@phosphor-icons/react";
+import {
+  CoatHanger,
+  Dress,
+  Handbag,
+  Hoodie,
+  Pants,
+  Sneaker,
+  Sparkle,
+  Sunglasses,
+  TShirt,
+} from "@phosphor-icons/react/dist/ssr";
 import { CATEGORIES } from "@/lib/constants";
 import badge from "@/public/vt.jpg";
 import heroPhoto from "@/public/hero.jpg";
@@ -36,6 +48,24 @@ const STEPS = [
     d: "Come by, try it, and pay at pickup. Change your mind? Just cancel the hold.",
   },
 ];
+
+// Category tile icons — Phosphor's clothing set (SSR build so they render
+// server-side and inherit `currentColor`).
+const CATEGORY_ICONS: Record<string, Icon> = {
+  Tops: TShirt,
+  Bottoms: Pants,
+  Dresses: Dress,
+  Outerwear: CoatHanger,
+  Knitwear: Hoodie,
+  Shoes: Sneaker,
+  Bags: Handbag,
+  Accessories: Sunglasses,
+};
+
+function CategoryIcon({ name }: { name: string }) {
+  const Icon = CATEGORY_ICONS[name] ?? Sparkle;
+  return <Icon size={65} weight="light" aria-hidden />;
+}
 
 export default async function WelcomePage() {
   const featured = await prisma.item.findMany({
@@ -197,18 +227,15 @@ export default async function WelcomePage() {
             <Link
               key={c}
               href={`/shop?category=${encodeURIComponent(c)}`}
-              className={`group flex aspect-square flex-col justify-between rounded-lg border border-line p-4 transition-colors hover:border-purple ${
+              className={`group flex transition-all duration-500 aspect-square flex-col justify-center items-center rounded-lg border border-line p-4 hover:border-purple ${
                 i % 3 === 0 ? "bg-purple/10" : "bg-surface"
               }`}
             >
-              <span className="font-display text-xs font-bold uppercase tracking-[0.16em] text-purple">
-                ✦
+              <span className="text-purple transition-all duration-500 group-hover:scale-110 group-hover:text-cream">
+                <CategoryIcon name={c} />
               </span>
-              <span className="font-display text-xl font-extrabold uppercase leading-none tracking-wide transition-colors group-hover:text-purple">
+              <span className="font-display transition-all duration-500 text-xl font-extrabold uppercase leading-none tracking-wide group-hover:text-purple">
                 {c}
-                <span className="block text-cream/40 group-hover:text-purple">
-                  →
-                </span>
               </span>
             </Link>
           ))}
