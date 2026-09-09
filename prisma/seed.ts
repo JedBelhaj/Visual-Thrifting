@@ -3,9 +3,9 @@ import bcrypt from "bcryptjs";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 import sharp from "sharp";
-import { UPLOAD_DIR, UPLOAD_URL_PREFIX } from "../lib/upload-dir";
 
 const prisma = new PrismaClient();
+const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
 
 const ADMIN_EMAIL = "admin@visualthrift.test";
 const ADMIN_PASSWORD = "admin12345";
@@ -213,7 +213,7 @@ async function makePhoto(
   const name = `seed-${key}.jpg`;
   const buf = await sharp(Buffer.from(svg)).jpeg({ quality: 82 }).toBuffer();
   await writeFile(path.join(UPLOAD_DIR, name), buf);
-  return `${UPLOAD_URL_PREFIX}/${name}`;
+  return `/uploads/${name}`;
 }
 
 const PHOTO_W = 1200;
@@ -238,7 +238,7 @@ async function fetchPhoto(
       .jpeg({ quality: 82 })
       .toBuffer();
     await writeFile(path.join(UPLOAD_DIR, name), jpg);
-    return `${UPLOAD_URL_PREFIX}/${name}`;
+    return `/uploads/${name}`;
   } catch (err) {
     console.warn(
       `  ! photo ${unsplashId} failed (${(err as Error).message}) — using placeholder`,
